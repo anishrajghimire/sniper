@@ -6,18 +6,18 @@ import re
 
 frequency = [2,1.5,1,0.5]
 vdd = [1,0.8,0.7,0.61]
-window_size = [192,128,64,64]
-q_size = [32,16,8,8]
-rs_entries = [64,32,16,16]
-l1_size = [64,32,16,16]
-l2_size = [1024,512,256,256]
+window_size = [192,128,64,64]                                      # ROB size
+q_size = [32,16,8,8]                                               # LQ/SQ size
+rs_entries = [64,32,16,16]                                         # IQ size
+l1_size = [64,32,16,16]                                            # L1 Cache size
+l2_size = [1024,512,256,256]                                       # L2 Cache size
 associativity = [8,4,4,4]
 
 
 for i in range(4):
     filename = 'config_file_'+ str(i) + '.cfg'
     new_config = open('/path/to/config/' + filename, 'w')
-    new_config.write('#include silvermont\n\n')
+    new_config.write('#include silvermont\n\n')                    # used 'silvermont.cfg' as template architecture
     new_config.write('[perf_model/core]\n')
     new_config.write('frequency = ' + str(frequency[i]))
     new_config.write('\n')
