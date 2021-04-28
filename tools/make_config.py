@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# this is the script to generate 4 different config files
+# this is the script to generate 4(default) different config files
 
 import sys
 import re
