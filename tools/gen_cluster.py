@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # this is the script to generate a cluster with separate number of cores 
-# this script generates a cluster with 2 cores, as only 2 input values are provided through parameters.
+# this script generates a cluster with 2 cores(dafault), as only 2 input values are provided through parameters.
 
 import sys
 import re
