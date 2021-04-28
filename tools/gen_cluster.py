@@ -1,20 +1,21 @@
 #!/usr/bin/env python
 # this is the script to generate a cluster with separate number of cores 
+# this script generates a cluster with 2 cores, as only 2 input values are provided through parameters.
 
 import sys
 import re
 
-architecture = 'silvermont'
+architecture = 'silvermont'                           # used 'silvermont.cfg' as template architecture
 frequency = 'frequency[] = 2,1'
-l1_size = 'cache_size[] = 64,16'
+l1_size = 'cache_size[] = 64,16'                      # L1 Cache size
 
 vdd = 0.8
-window_size = 'window_size[] = 192,64'
-lq_size = 'outstanding_loads[] = 32,8'
-sq_size = 'outstanding_stores[] = 32,8'
-rs_entries = 'rs_entries[] = 64,16'
-l2_size = 256
-shared_cores = 2
+window_size = 'window_size[] = 192,64'                # ROB size
+lq_size = 'outstanding_loads[] = 32,8'                # LQ size
+sq_size = 'outstanding_stores[] = 32,8'               # SQ size
+rs_entries = 'rs_entries[] = 64,16'                   # IQ size
+l2_size = 256                                         # L2 Cache size
+shared_cores = 2                                      # L2 shared in cores
 associativity = 4
 
 with open('/path/to/config/' + sys.argv[1], 'w') as f:
