@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Create the script to generate a cluster with separate number of cores 
+# this is the script to generate a cluster with separate number of cores 
 
 import sys
 import re
@@ -17,7 +17,7 @@ l2_size = 256
 shared_cores = 2
 associativity = 4
 
-with open('/home/anish/sniper-7.2/config/' + sys.argv[1], 'w') as f:
+with open('/path/to/config/' + sys.argv[1], 'w') as f:
     f.write('#include ' + architecture + '\n\n')
     f.write('[perf_model/core]\n')
     f.write(frequency + '\n')

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Create the scripts to generate different config files
+# this is the script to generate 4 different config files
 
 import sys
 import re
@@ -16,7 +16,7 @@ associativity = [8,4,4,4]
 
 for i in range(4):
     filename = 'config_file_'+ str(i) + '.cfg'
-    new_config = open('/home/anish/sniper-7.2/config/' + filename, 'w')
+    new_config = open('/path/to/config/' + filename, 'w')
     new_config.write('#include silvermont\n\n')
     new_config.write('[perf_model/core]\n')
     new_config.write('frequency = ' + str(frequency[i]))
