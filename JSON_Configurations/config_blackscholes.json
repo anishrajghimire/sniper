@@ -1,0 +1,97 @@
+{
+     "python_path" : ["."],
+     "knobs" :
+        [
+	{
+	    "name" : "l1d_size",
+            "groups" : "sniper",
+	    "values" : [1, 2, 4, 8, 16, 32]
+        },
+        {
+	    "name" : "l1i_size",
+	    "groups" : "sniper",
+            "values" : [1, 2, 4, 8, 16, 32]
+	},
+	{
+	    "name" : "l1d_associativity",
+            "groups" : "sniper",
+	    "values" : [1, 2, 4, 8]
+        },
+	{
+	    "name" : "l1i_associativity",
+            "groups" : "sniper",
+	    "values" : [1, 2, 4, 8]
+        },
+	{
+	    "name" : "l2_size",
+            "groups" : "sniper",
+	    "values" : [1, 2, 4, 8, 16, 32, 64, 128, 256]
+        },
+	{
+	    "name" : "l2_associativity",
+            "groups" : "sniper",
+	    "values" : [2, 4, 8]
+        },
+        {
+	    "name" : "dispatch_width",
+            "groups" : "sniper",
+	    "values" : [1, 2, 4, 6, 8]
+        },
+	{
+	    "name" : "window_size",
+            "groups" : "sniper",
+	    "values" : [8, 16, 32, 64, 128, 192, 256]
+        }
+     ],
+     "costs" : [ "cpu_cycles" ],
+     "sampling" : {
+        "pyscript" : "random_sampling.py",
+        "arguments" : "",
+        "output_log" : "sampling.log"
+     },
+     "model" : {
+        "pyscript" : "ml_model.py",
+        "ml_model_script" : "keras_cnn.py",
+        "output_log" : "network.log",
+        "arguments" : "",
+        "ml_arguments" : "-convs 2 -tl-samples -loss custom_mean_abs_log_loss -epochs 2000 -train-test-split 1.0 -validation-split 0.4"
+     },
+     "exploration" : {
+         "pyscript" : "exploration.py",
+         "arguments" : "",
+         "output_log" : "exploration.log",
+         "explore" : 
+            [
+            {
+                "name" : "sniper_explore",
+                "groups" : "sniper",
+                "pre_evaluated_data" : "output_blackscholes_deffe.csv",
+                "exploration_table" : "deffe_exploration.csv",
+                "evaluation_table" : "deffe_evaluation.csv",
+                "ml_predict_table" : "deffe_prediction.csv",
+                "evaluation_predict_table" : "deffe_eval_predict.csv"
+            }
+            ]   
+     },
+     "evaluate" : {
+        "pyscript"    : "evaluate.py",
+        "arguments" : "",
+	"hold_evaluated_data" : "True",
+        "sample_evaluate_script" : "evaluate_sniper.sh",
+        "batch_size"     : "1",
+        "output_log"    : "evaluate.log"
+     },
+     "extract" : {
+        "pyscript" : "extract.py",
+        "arguments" : "",
+        "sample_extract_script" : "extract.sh",
+        "batch_size"     : "1",
+        "cost_output" : "results.out",
+        "output_log" : "extract.log"
+     },
+     "framework" : {
+        "output_log" : "framework_output.log",
+        "run_directory" : "sniper_exploration"
+     }
+}
+
