@@ -6,7 +6,7 @@
    * gives us a heterogeneous architecture in the generic .cfg format, which can be run directly on the sniper simulator.
    * command to run throught the terminal:
       ```
-      $ python gen_cluster.py cluster_with_2_cores  //passing a new cluster through argument      
+      $ python gen_cluster.py cluster_with_2_cores  [//]passing a new cluster through argument      
       ```
       
       
